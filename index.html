@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesli Asistan - AI Destekli Görüşme</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Crimson+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0e27;
+            --accent: #00d9ff;
+            --accent-glow: rgba(0, 217, 255, 0.3);
+            --secondary: #ff6b6b;
+            --text: #e8e8e8;
+            --text-dim: #a0a0a0;
+            --bg-gradient: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1428 100%);
+        }
+
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--bg-gradient);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Arka plan efektleri */
+        .bg-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -250px; left: -100px; }
+        .orb-2 { width: 400px; height: 400px; background: var(--secondary); bottom: -200px; right: -100px; animation-delay: 7s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+
+        h1 {
+            font-family: 'Space Mono', monospace;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent) 0%, #fff 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .info-section h2 {
+            font-family: 'Space Mono', monospace;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Widget Kutusu Tasarımı */
+        .widget-container {
+            grid-column: 1 / -1;
+            background: rgba(0, 217, 255, 0.03);
+            border: 1px solid var(--accent);
+            border-radius: 32px;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0, 217, 255, 0.1);
+            position: relative;
+        }
+
+        .widget-container h2 {
+            font-family: 'Space Mono', monospace;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        /* Widget'ı tam ortalayan wrapper */
+        .widget-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+            margin: 2rem 0;
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            color: var(--text-dim);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>SESLİ ASİSTAN</h1>
+            <p class="subtitle">Yapay Zeka Destekli Gerçek Zamanlı İletişim</p>
+        </header>
+
+        <div class="main-content">
+            <div class="info-section">
+                <h2>Nasıl Çalışır?</h2>
+                <p>Gelişmiş yapay zeka teknolojisi ile doğal bir konuşma deneyimi yaşayın. Asistanımız sorularınızı anlar ve anında yanıt verir.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Neden Kullanmalısınız?</h2>
+                <p>İster bilgi almak, ister yardım istemek olsun; sesli asistanımız her zaman yanınızda.</p>
+            </div>
+
+            <div class="widget-container">
+                <h2>Hemen Konuşmaya Başlayın</h2>
+                <p style="color: var(--text-dim);">Konuşmayı başlatmak için aşağıdaki mikrofona tıklayın.</p>
+                
+                <div class="widget-wrapper">
+                    <elevenlabs-convai agent-id="agent_6201kcnp0rv2eq7rrk73kge1zb7k"></elevenlabs-convai>
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--accent);">
+                    <span style="width: 8px; height: 8px; background: var(--accent); border-radius: 50%; display: inline-block; box-shadow: 0 0 10px var(--accent);"></span>
+                    <span style="font-family: 'Space Mono'; font-size: 0.8rem; letter-spacing: 2px;">SİSTEM ÇEVRİMİÇİ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Sesli Asistan | Powered by ElevenLabs AI</p>
+    </footer>
+
+    <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>
